@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { MEMORY_VIDEOS } from '../config/memoryData.js';
 
 export class VideoScreen {
   constructor(scene, lighting) {
@@ -244,17 +245,28 @@ export class VideoScreen {
       if (res.ok) {
         const data = await res.json();
         this.availableVideos = data.videos || [];
-        this.drawStandbyScreen(0);
-        if (this.availableVideos.length > 0) {
-          // Pre-load the first video but keep visualizer on screen until user starts playback
-          this.loadVideo(this.availableVideos[0].url, this.availableVideos[0].name, false);
-          this.screenMaterial.map = this.standbyTexture;
-          this.screenMaterial.needsUpdate = true;
-          this.updateScreenAspect(16 / 9);
-        }
       }
     } catch (e) {
-      console.warn('Could not query videos list:', e);
+      console.warn('Could not query /api/videos, using manifest fallback:', e);
+    }
+
+    if (!this.availableVideos || this.availableVideos.length === 0) {
+      if (Array.isArray(MEMORY_VIDEOS) && MEMORY_VIDEOS.length > 0) {
+        this.availableVideos = MEMORY_VIDEOS.map(v => ({
+          name: v.filename || v.title,
+          url: v.src || v.url,
+          title: v.title
+        }));
+      }
+    }
+
+    this.drawStandbyScreen(0);
+    if (this.availableVideos.length > 0) {
+      // Pre-load the first video but keep visualizer on screen until user starts playback
+      this.loadVideo(this.availableVideos[0].url, this.availableVideos[0].name, false);
+      this.screenMaterial.map = this.standbyTexture;
+      this.screenMaterial.needsUpdate = true;
+      this.updateScreenAspect(16 / 9);
     }
     this.notifyState();
   }
