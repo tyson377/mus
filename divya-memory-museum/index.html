@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Divya Memory Museum - 58 Permanent Exhibits</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+  
+  <!-- 3D Museum Stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+  
+  <!-- Grand Exhibition Wings Stylesheet -->
+  <link rel="stylesheet" href="./museum.css" />
+
+  <!-- Import map for Three.js ES Module -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========================================================================
+       Museum Top Navigation Bar
+       ======================================================================== -->
+  <nav class="museum-nav">
+    <a href="#" class="nav-brand">
+      <div class="nav-emblem">🏛️</div>
+      <div class="brand-text">
+        <span class="brand-title">DIVYA MEMORY MUSEUM</span>
+        <span class="brand-sub">58 Permanent Exhibits • Est. 2026</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#3d-walkthrough" class="nav-btn-link">🎮 3D Walkthrough</a></li>
+      <li><a href="#exhibits-section" class="nav-btn-link">🖼️ Photo Exhibits (42)</a></li>
+      <li><a href="#exhibits-section" class="nav-btn-link">🎬 Video Screening Room (16)</a></li>
+      <li><a href="#monuments-section" class="nav-btn-link">👑 Dedication Wall</a></li>
+      <li><a href="#secret-monument" class="nav-btn-link">🔒 Secret Sanctuary</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Auto-Tour Lightbox Slideshow -->
+      <button id="nav-start-tour" class="btn-nav-action" title="Start Guided Museum Auto-Tour">
+        ▶ <span>Launch Museum Tour</span>
+      </button>
+
+      <!-- Ambient Audio Chimes -->
+      <button id="nav-toggle-audio" class="btn-nav-icon" title="Toggle Museum Ambience" aria-label="Toggle Ambience">
+        🎵
+      </button>
+
+      <!-- Celebrate Confetti -->
+      <button id="nav-celebrate-btn" class="btn-nav-icon" title="Celebrate with Confetti" aria-label="Confetti Burst">
+        🎉
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       1. The 3D Virtual Walkthrough Exhibit Pavilion
+       ======================================================================== -->
+  <section id="3d-walkthrough" class="walkthrough-hero-section">
+    <!-- 3D Three.js WebGL Canvas Mount -->
+    <div id="canvas-container"></div>
+
+    <!-- Floating Navigation Bar inside 3D Pavilion -->
+    <div class="walkthrough-bottom-bar">
+      <span class="walkthrough-status-pill">🏛️ 3D Virtual Walkthrough Exhibit Active</span>
+      <a href="#exhibits-section" class="btn-scroll-down">
+        Explore Curated Exhibition Wings (All 58 Exhibits) ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       2. The Museum Exhibition Galleries & Curated Wings (All 58 Displays)
+       ======================================================================== -->
+  <section id="exhibits-section" class="exhibition-wings-section">
+    <div class="section-head">
+      <span class="section-eyebrow">CURATED MUSEUM EXHIBITION WINGS</span>
+      <h2 class="section-main-title">The Complete Memory Collection</h2>
+      <p class="section-curator-desc">
+        Explore all 42 Framed Artworks and 16 Motion Exhibits inside the museum displays.
+        Click any framed photo or video screen to inspect in full resolution or play with audio.
+      </p>
+    </div>
+
+    <!-- Wing Filter Navigation -->
+    <div class="wing-tabs-container">
+      <button class="wing-tab-btn active" data-wing="all">
+        🌟 All Exhibits <span class="wing-badge-count">58</span>
+      </button>
+      <button class="wing-tab-btn" data-wing="photos">
+        🖼️ Wing I: Photo Exhibits <span class="wing-badge-count">42</span>
+      </button>
+      <button class="wing-tab-btn" data-wing="videos">
+        🎬 Wing II: Video Screening Room <span class="wing-badge-count">16</span>
+      </button>
+    </div>
+
+    <!-- Museum Exhibits Grid (All 58 Media Assets Rendered Lazily with URL Encoding) -->
+    <div id="museum-exhibits-grid" class="museum-grid">
+      <!-- 58 authentic museum framed artworks and motion screening displays rendered by museumApp.js -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. Special Dedication Wall & Secret Sanctuary Exhibits
+       ======================================================================== -->
+  <section id="monuments-section" class="monument-section">
+    <!-- Dedication Wall Exhibit -->
+    <div class="monument-card">
+      <span class="monument-badge">GRAND ROTUNDA • PERMANENT DEDICATION WALL</span>
+      <h2 class="monument-quote">“Every memory has a story. Every story has you.”</h2>
+      <p class="monument-note">
+        Dedicated to Divya. A permanent sanctuary celebrating your warmth, gentle grace, and timeless laughter.
+        Preserved with eternal love and heartfelt gratitude • Est. 2026.
+      </p>
+    </div>
+
+    <!-- Secret Sanctuary Exhibit -->
+    <div id="secret-monument" class="monument-card" style="border-color: rgba(245, 208, 97, 0.5); background: linear-gradient(145deg, #120e1e 0%, #06050b 100%);">
+      <span class="monument-badge" style="color: #ecd07f;">THE SECRET SANCTUARY • THE MOST PRECIOUS MEMORIES</span>
+      <h2 class="monument-quote">“Some memories never fade. They live forever in our hearts.”</h2>
+      <p class="monument-note">
+        An intimate sanctuary discovered beyond the golden archways, guarded by a rotating crystal heart and celestial starry reflections.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. Celebratory Birthday Wish & Confetti Section
+       ======================================================================== -->
+  <section class="museum-celebration-wrap">
+    <div class="monument-card" style="border-color: #f5d061;">
+      <span class="monument-badge">HONORING DIVYA</span>
+      <h2 class="monument-quote" style="font-size: clamp(2rem, 4vw, 3rem); font-style: normal;">Happy Birthday, Divya!</h2>
+      <p class="monument-note" style="margin-bottom: 28px; font-size: 1.15rem; line-height: 1.8;">
+        May your day be filled with as much happiness as you bring to everyone around you.
+        Here is to celebrating another wonderful year of your warmth, brilliance, laughter, and grace!
+      </p>
+      <button id="btn-celebrate-confetti" class="btn-museum-confetti">
+        🎉 Fire Birthday Confetti!
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. Full-Screen Exhibit Lightbox & Guided Auto-Tour Modal
+       ======================================================================== -->
+  <div id="museum-lightbox-modal" class="museum-lightbox-modal" role="dialog" aria-modal="true" aria-label="Museum Exhibit Lightbox">
+    <!-- Top Bar -->
+    <div class="lightbox-top-bar">
+      <div id="lightbox-catalog-counter" class="lightbox-counter-wrap">
+        <span class="catalog-badge">EXHIBIT #01</span>
+        <span class="catalog-total">1 of 58 Exhibits</span>
+      </div>
+
+      <div class="lightbox-actions">
+        <button id="btn-tour-toggle" class="btn-tour-mode" title="Toggle Auto-Tour Slideshow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Auto-Tour Slideshow
+        </button>
+        <button id="btn-lightbox-close" class="btn-close-lightbox" title="Close (ESC)">✕</button>
+      </div>
+    </div>
+
+    <!-- Main Stage View -->
+    <div class="lightbox-stage-view">
+      <button id="btn-stage-prev" class="stage-nav-arrow prev" title="Previous Exhibit (←)">‹</button>
+      
+      <div id="lightbox-media-mount" class="lightbox-media-mount">
+        <!-- Active Photo or Video Exhibit injected here -->
+      </div>
+
+      <button id="btn-stage-next" class="stage-nav-arrow next" title="Next Exhibit (→)">›</button>
+    </div>
+
+    <!-- Bottom Tray with Wing, Title, Caption & Filmstrip -->
+    <div class="lightbox-bottom-tray">
+      <div class="lightbox-exhibit-info">
+        <span id="lightbox-exhibit-wing" class="lightbox-wing-tag">Wing I: Photo Exhibits</span>
+        <h3 id="lightbox-exhibit-title" class="lightbox-exhibit-title">Exhibit Title</h3>
+        <p id="lightbox-exhibit-caption" class="lightbox-exhibit-caption">Curator reflection and story description.</p>
+      </div>
+
+      <!-- Filmstrip of all 58 exhibits -->
+      <div id="lightbox-filmstrip-strip" class="lightbox-filmstrip-strip">
+        <!-- Miniature thumbnails injected by museumApp.js -->
+      </div>
+    </div>
+
+    <!-- Tour Progress Bar -->
+    <div id="tour-progress-bar" class="tour-progress-bar"></div>
+  </div>
+
+  <!-- Museum Footer -->
+  <footer class="museum-footer">
+    <p>DIVYA MEMORY MUSEUM • PERMANENT RETROSPECTIVE • 58 EXHIBITS</p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">Every photograph and motion memory curated with love and admiration.</p>
+  </footer>
+
+  <!-- 3D Virtual Walkthrough Engine -->
+  <script type="module" src="./src/main.js"></script>
+
+  <!-- Museum Exhibition Wings & Lightbox Manager -->
+  <script type="module" src="./museumApp.js"></script>
+</body>
+</html>

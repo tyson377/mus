@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Divya Memory Museum - 3D Virtual Gallery</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+
+  <!-- Import map for Three.js ES Module -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 3D Canvas Mount -->
+  <div id="canvas-container"></div>
+
+  <!-- Back to Exhibition Wings Pill -->
+  <a href="./index.html#exhibits-section" style="position:fixed; top:20px; left:20px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:9999px; background:rgba(13,17,26,0.85); backdrop-filter:blur(16px); border:1px solid rgba(245,208,97,0.35); color:#fff; font-family:sans-serif; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,0.5); transition:all 0.2s;" onmouseover="this.style.borderColor='#f5d061';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(245,208,97,0.35)';this.style.transform='translateY(0)'">
+    <span>←</span>
+    <span>Museum Exhibition Wings (All 58 Exhibits)</span>
+  </a>
+
+  <!-- Main JavaScript App -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

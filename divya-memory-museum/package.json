@@ -1,0 +1,12 @@
+{
+  "name": "divya-memory-museum",
+  "version": "1.0.0",
+  "description": "Realistic 3D Divya Memory Museum with interactive walking controls, photo gallery, and 3D video cinema.",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "keywords": ["threejs", "3d", "museum", "virtual-tour", "memory-gallery"],
+  "author": "",
+  "license": "MIT"
+}

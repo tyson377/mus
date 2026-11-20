@@ -1,0 +1,12 @@
+# Ignore large archives
+*.zip
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
